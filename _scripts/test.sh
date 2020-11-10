@@ -6,5 +6,3 @@ set -e
 cfn-lint --version
 cfn-lint src/templates/**/*.template.yaml
 
-# make sure that site can build
-mkdocs build

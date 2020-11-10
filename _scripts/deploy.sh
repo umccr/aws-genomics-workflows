@@ -3,7 +3,6 @@
 set -e
 
 bash _scripts/make-dist.sh
-mkdocs build
 
 SITE_BUCKET=s3://docs.opendata.aws/genomics-workflows
 ASSET_BUCKET=s3://aws-genomics-workflows
@@ -59,9 +58,8 @@ function s3_sync() {
     echo "   from: $source"
     echo "     to: $destination"
     aws s3 sync \
-        --profile asset-publisher \
-        --region us-east-1 \
-        --acl public-read \
+        --profile agha \
+        --region ap-southeast-2 \
         --delete \
         --metadata commit=$(git rev-parse HEAD) \
         $source \
